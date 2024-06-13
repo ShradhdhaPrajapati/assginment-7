@@ -1,0 +1,48 @@
+QUE- 3
+What is different between encryption and hashing. 
+
+ANS:- 
+
+Encryption and hashing are both techniques used in the field of cryptography to secure data, 
+but they serve different purposes and function in distinct ways. Here are the key differences
+ between encryption and hashing:
+
+ Purpose
+->Encryption: The main purpose of encryption is to protect the confidentiality of data. It transforms readable data (plaintext) into an unreadable format (ciphertext) so that only authorized parties can
+ revert it back to its original form using a decryption key.
+
+->Hashing: The main purpose of hashing is to ensure data integrity and authenticity. It transforms data into a fixed-size string of characters, which is typically a digest that represents the data uniquely. It is designed to be a one-way function, meaning that it is practically impossible to
+ reverse the process and obtain the original data from the hash value.
+
+ Reversibility
+
+ ->Encryption: Encryption is a reversible process. Data that has been encrypted can be decrypted
+  back to its original form using the appropriate key.
+ ->Hashing: Hashing is a non-reversible process. Once data has been hashed, there is no 
+ way to convert the hash value back to the original data.
+
+ Use Cases
+Encryption: Commonly used for securing sensitive information during transmission or storage, such as encrypting emails, files, or messages to protect them from unauthorized access.
+Hashing: Commonly used for data verification, such as checking the integrity of a file, storing passwords securely (passwords are hashed and stored, and the hash is compared during login), and generating digital signatures.
+
+
+Key Requirements
+Encryption: Requires a key (or keys, in the case of asymmetric encryption) for both encryption and decryption processes. The security of the encrypted data depends on the secrecy of the key.
+Hashing: Does not require a key. The process is deterministic, meaning the same input will always produce the same hash output.
+
+
+Algorithms
+Encryption: Examples include AES (Advanced Encryption Standard), RSA (Rivest-Shamir-Adleman), and DES (Data Encryption Standard).
+Hashing: Examples include SHA (Secure Hash Algorithm) family like SHA-256, MD5 (Message Digest Algorithm 5), and bcrypt.
+
+
+Speed
+Encryption: Generally slower than hashing because it involves more complex operations to ensure that data can be securely decrypted.
+Hashing: Generally faster because it involves straightforward computations to produce a fixed-size hash value.
+
+
+Output Size
+Encryption: The output size is generally proportional to the input size, although it may include padding or other alterations.
+Hashing: The output size is fixed, regardless of the input size. For example, SHA-256 always produces a 256-bit (32-byte) hash value.
+
+Understanding these differences helps in choosing the right technique for the appropriate security requirement.

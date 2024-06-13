@@ -1,0 +1,116 @@
+Que-1 What is Middleware in Express.js?
+
+ANS-
+ Middleware in Express.js refers to functions that execute during the lifecycle of a request to the Express server. These functions have access to the request object (req), the response object (res), and the next middleware function in the application’s request-response cycle. Middleware can perform various tasks, including modifying the request and response objects, ending the request-response cycle, and calling the next middleware function.
+
+ => Here are some common uses of middleware in Express.js:
+
+1.Request Logging: Logging details about incoming requests.
+2.Security: Implementing authentication and authorization.
+3.Data Parsing: Parsing request bodies, cookies, etc.
+4.Serving Static Files: Serving static assets like HTML, CSS, JavaScript, and images.
+5.Error Handling: Handling errors and exceptions.
+
+
+Types of Middleware:-
+1.Application-level Middleware: These are bound to an instance of the express object using app.use() or app.METHOD() (where METHOD is an HTTP method like GET, POST, etc.).
+
+/*
+const express = require('express');
+const app = express();
+
+app.use((req, res, next) => {
+  console.log('Time:', Date.now());
+  next();
+});
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.listen(3000);
+
+*/
+
+2.Router-level Middleware: These work similarly to application-level middleware but are bound to an instance of express.Router().
+
+/* const express = require('express');
+const app = express();
+const router = express.Router();
+
+router.use((req, res, next) => {
+  console.log('Router-level middleware');
+  next();
+});
+
+router.get('/', (req, res) => {
+  res.send('Hello from router');
+});
+
+app.use('/router', router);
+
+app.listen(3000);
+ */
+
+ 3.Error-handling Middleware: These are defined with four arguments: (err, req, res, next). They handle errors that occur in the application.
+ /*
+ app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
+ */
+
+ 4.Built-in Middleware: Express comes with some built-in middleware functions, such as express.static for serving static files, express.json for parsing JSON payloads, and express.urlencoded for parsing URL-encoded data.
+
+ /*
+ app.use(express.static('public'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+ */
+
+ 5.Third-party Middleware: Middleware from third parties that can be installed via npm and integrated into an Express app. Examples include morgan for logging, body-parser for parsing request bodies, and cors for enabling Cross-Origin Resource Sharing.
+
+ /*
+const morgan = require('morgan');
+app.use(morgan('combined'));
+
+ */
+
+ Middleware Workflow:-
+
+ The workflow of middleware in Express.js follows a layered approach, where each middleware function performs a specific task and then passes control to the next middleware in the stack by calling next(). If a middleware function does not call next(), the request-response cycle ends there.
+
+ Here's an example demonstrating the flow of middleware:
+
+/*
+const express = require('express');
+const app = express();
+
+app.use((req, res, next) => {
+  console.log('First middleware');
+  next();
+});
+
+app.use((req, res, next) => {
+  console.log('Second middleware');
+  next();
+});
+
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+app.listen(3000);
+
+*/
+
+In this example, when a request is made to the root route (/), the following happens:
+
+1.The first middleware logs "First middleware" and calls next().
+2.The second middleware logs "Second middleware" and calls next().
+3.The route handler sends "Hello World" as the response.
+
+
+Middleware is a powerful feature of Express.js that allows developers to modularize and organize their code effectively, handling a variety of tasks and ensuring a clean and maintainable codebase.

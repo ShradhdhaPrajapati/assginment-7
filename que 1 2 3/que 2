@@ -1,0 +1,9 @@
+Que-2
+What is json web tokens?
+
+ANS:- 
+JSON Web Tokens (JWT) are a compact, URL-safe means of representing claims to be transferred between two parties. These claims are digitally signed and can be verified to ensure their authenticity and integrity. JWTs can be used for authentication and authorization, securely transmitting information between parties, and maintaining session state in web applications.
+
+A JWT consists of three parts separated by dots: the header, the payload, and the signature. The header typically consists of metadata about the token, such as the type of token and the hashing algorithm used. The payload contains the claims, which are statements about an entity (typically the user) and additional data. The signature is used to verify that the token was not tampered with during transmission and that the sender is who they claim to be.
+
+JWTs are often used in authentication systems where a user logs in and receives a JWT, which they then include in subsequent requests to authenticate themselves. The server can then verify the JWT to ensure that the user is who they claim to be and grant access accordingly. This eliminates the need to store session state on the server, making JWTs a scalable solution for distributed systems.
